@@ -22,6 +22,10 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
 }
+const onCpbutton = function (event) {
+  $('#change-password').show()
+  $('#changepw').hide()
+}
 const onChangePassword = function (event) {
   event.preventDefault()
   const form = event.target
@@ -45,6 +49,7 @@ const onGameCreate = function (event) {
 module.exports = {
   onSignUp,
   onSignIn,
+  onCpbutton,
   onChangePassword,
   onSignOut,
   onGameCreate

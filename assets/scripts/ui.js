@@ -47,8 +47,10 @@ const newGameSuccess = function (event) {
   $('#message').text('success')
   const gameData = event.game
   console.log(gameData._id, gameData.cells)
-  $('.auth').show()
+  $('#game-board').show()
   $('.unauth').hide()
+  $('#changepw').hide()
+  $('#sign-out').show()
 }
 const newGameFailure = function (error) {
   $('#message').text('New game failed' + error)
