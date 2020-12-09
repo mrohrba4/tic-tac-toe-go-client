@@ -18,4 +18,5 @@ $(() => {
   $('#changepw').on('click', authEvents.onCpbutton)
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', authEvents.onGameCreate)
+  $('.gamerows').on('click', authEvents.onGameClick)
 })

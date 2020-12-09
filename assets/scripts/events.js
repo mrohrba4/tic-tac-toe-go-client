@@ -45,12 +45,15 @@ const onGameCreate = function (event) {
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
-
+const onGameClick = function (event) {
+  console.log('clicked')
+}
 module.exports = {
   onSignUp,
   onSignIn,
   onCpbutton,
   onChangePassword,
   onSignOut,
-  onGameCreate
+  onGameCreate,
+  onGameClick
 }
