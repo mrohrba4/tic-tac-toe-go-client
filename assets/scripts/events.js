@@ -45,9 +45,16 @@ const onGameCreate = function (event) {
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
-const onGameClick = function (event) {
-  console.log('clicked')
+const onClickSpace = function (event) {
+  const position = event.target.id
+  if ($('.box').text().length === 0) {
+    console.log('valid')
+  } else {
+    console.log('Invalid')
+  }
+  console.log(position)
 }
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -55,5 +62,5 @@ module.exports = {
   onChangePassword,
   onSignOut,
   onGameCreate,
-  onGameClick
+  onClickSpace
 }
