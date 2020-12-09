@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe Go</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,60 +12,84 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe Go</h1>
+      <div class="container">
+        <div class="border bg-secondary row d-flex justify-content-center">
+          <h1>TTT GO</h1>
+        </div>
+        <div class="border row d-flex justify-content-center">Test</div>
+          <p id="message"></p>
+          <div class="unauth">
+            <h2 class="d-flex justify-content-center">Sign Up</h2>
+            <form id="sign-up">
+              <input
+                placeholder="email"
+                type="text"
+                name="credentials[email]"
+                />
+              <input
+                placeholder="Password"
+                type="password"
+                name="credentials[password]"/>
+              <input
+                placeholder="Confirm Password"
+                type="password"
+                name="credentials[password_confirmation]"
+                />
+                <button type="submit">Sign Up</button>
+            </form>
 
-      <div class="unauth">
-        <h2>Sign Up</h2>
-        <form id="sign-up">
-          <input
-            placeholder="email"
-            type="text"
-            name="credentials[email]"
-            />
-          <input
-            placeholder="Password"
-            type="password"
-            name="credentials[password]"/>
-          <input
-            placeholder="Confirm Password"
-            type="password"
-            name="credentials[password_confirmation]"
-            />
-            <button type="submit">Sign Up</button>
-        </form>
+            <h2 class="d-flex justify-content-center">Sign In</h2>
 
-        <h2>Sign In</h2>
+            <form id="sign-in">
+              <input
+                name="credentials[email]"
+                type="text"
+                placeholder="email"
+                />
+              <input
+                name="credentials[password]"
+                type="password"
+                placeholder="Password"
+                />
+              <button type="submit">Sign In</button>
+            </form>
+          </div>
+          <div class="auth">
 
-        <form id="sign-in">
-          <input
-            name="credentials[email]"
-            type="text"
-            placeholder="email"
-            />
-          <input
-            name="credentials[password]"
-            type="password"
-            placeholder="Password"
-            />
-          <button type="submit">Sign In</button>
-        </form>
-      </div>
-      <div class="auth">
-        <h2>Change Password</h2>
+            <button id="new-game">New Game</button>
+            <div class="game-create">
+              <div class="row">
+                <!-- row 1 -->
+                <div class="col-4 box border">1a</div>
+                <div class="col-4 box border">2a</div>
+                <div class="col-4 box border">3a</div>
+                <!-- row 2 -->
+                <div class="col-4 box border">1b</div>
+                <div class="col-4 box border">2b</div>
+                <div class="col-4 box border">3b</div>
+                <!-- row 3 -->
+                <div class="col-4 box border">1c</div>
+                <div class="col-4 box border">2c</div>
+                <div class="col-4 box border">3c</div>
+              </div>
+            </div>
+            <h2>Change Password</h2>
 
-        <form id="change-password">
-          <input
-            name="passwords[old]"
-            type="password"
-            placeholder="Old Password"
-          />
-          <input
-            name="passwords[new]"
-            type="password"
-            placeholder="New Password"
-          />
-          <button type="submit">Change Password</button>
-        </form>
-      </div>
+            <form id="change-password">
+              <input
+                name="passwords[old]"
+                type="password"
+                placeholder="Old Password"
+              />
+              <input
+                name="passwords[new]"
+                type="password"
+                placeholder="New Password"
+              />
+              <button type="submit">Change Password</button>
+            </form>
+            <button id="sign-out">Sign Out</button>
+          </div>
+        </div>
     </body>
 </html>

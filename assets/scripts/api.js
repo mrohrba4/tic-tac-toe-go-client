@@ -27,9 +27,31 @@ const changePassword = function (formData) {
     }
   })
 }
+const signOut = function () {
+  return $.ajax({
+    url: config.apiUrl + '/sign-out',
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+const newGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    body: {}
+  }
+  )
+}
 
 module.exports = {
   signUp,
   signIn,
-  changePassword
+  changePassword,
+  signOut,
+  newGame
 }
