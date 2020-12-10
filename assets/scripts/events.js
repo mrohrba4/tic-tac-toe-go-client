@@ -47,8 +47,9 @@ const onGameCreate = function (event) {
 }
 const onClickSpace = function (event) {
   const position = event.target.id
-  if ($('.box').text().length === 0) {
+  if (event.target.ClassName).text().length === 0) {
     console.log('valid')
+    $(event.target).text('X')
   } else {
     console.log('Invalid')
   }
