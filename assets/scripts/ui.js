@@ -35,6 +35,7 @@ const signOutSuccess = function () {
   $('#message').text('Signed out successfully')
 
   $('.auth').hide()
+  $('#game-board').hide()
   $('.unauth').show()
 
   store.user = null
