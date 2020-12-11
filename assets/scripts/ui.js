@@ -44,10 +44,9 @@ const signOutSuccess = function () {
 const signOutFailure = function (error) {
   $('#message').text('sign out failure' + error)
 }
-const newGameSuccess = function (event) {
+const newGameSuccess = function (response) {
   $('#message').text('success')
-  const gameData = event.game
-  console.log(gameData._id, gameData.cells)
+  store.game = response.game
   $('#game-board').show()
   $('.unauth').hide()
   $('#changepw').hide()
@@ -55,6 +54,14 @@ const newGameSuccess = function (event) {
 }
 const newGameFailure = function (error) {
   $('#message').text('New game failed' + error)
+}
+
+const updateGameSuccess = function (event) {
+  const gameData = event.game
+  console.log(gameData._id, gameData.cells)
+}
+const updateGameFailure = function (error) {
+  $('#message').text('Failed' + error)
 }
 
 module.exports = {
@@ -67,5 +74,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   newGameSuccess,
-  newGameFailure
+  newGameFailure,
+  updateGameSuccess,
+  updateGameFailure
 }

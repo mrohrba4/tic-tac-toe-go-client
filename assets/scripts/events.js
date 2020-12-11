@@ -55,15 +55,23 @@ const onGameCreate = function (event) {
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
+
 const onClickSpace = function (event) {
-  const position = event.target.id
+  const index = event.target.id
   if ($(event.target).text().length === 0) {
-    console.log('valid')
+    const move = 'Valid'
+    console.log(move)
     $(event.target).text('X')
+    const value = $(event.target).text()
+    api.updateGame(index, value)
+      .then(ui.updateGameSuccess)
+      .catch(ui.updateGameFailure)
   } else {
-    console.log('Invalid')
+    const move = 'Invalid'
+    $('#message').text('Invalid Move')
+    console.log(move)
   }
-  console.log(position)
+  console.log(api.updateGame)
 }
 
 module.exports = {

@@ -48,10 +48,33 @@ const newGame = function () {
   )
 }
 
+const updateGame = function (index, value) {
+  console.log(index)
+  console.log(value)
+  const over = store.game.over
+  console.log(over)
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game._id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  })
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  newGame
+  newGame,
+  updateGame
 }
