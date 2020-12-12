@@ -1,1 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
+
+.img-thumbnail {
+  max-width: 80%;
+  max-height: 400px;
+  // background-color: grey;
+}

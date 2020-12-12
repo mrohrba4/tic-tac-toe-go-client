@@ -51,13 +51,21 @@ const newGameSuccess = function (response) {
   $('.unauth').hide()
   $('#changepw').hide()
   $('#sign-out').show()
+  $('.box').text('')
 }
 const newGameFailure = function (error) {
   $('#message').text('New game failed' + error)
 }
 
-const updateGameSuccess = function (event) {
+const updateGameSuccess = function (event, winCombo) {
   const gameData = event.game
+  console.log(winCombo)
+  console.log(gameData.cells)
+  // if (winCond.some(gameData.cells) === true) {
+  //   store.game.over = true
+  // } else {
+  //   store.game.over = false
+  // }
   console.log(gameData._id, gameData.cells)
 }
 const updateGameFailure = function (error) {

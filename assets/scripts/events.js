@@ -56,13 +56,34 @@ const onGameCreate = function (event) {
     .catch(ui.newGameFailure)
 }
 
+let turnCount = 0
+let player = 'X'
+
+const currentTurn = function () {
+  player = 'X'
+  turnCount++
+  if (turnCount % 2 === 0) {
+    player = 'O'
+  } else {
+    player = 'X'
+  }
+}
+
+
+
 const onClickSpace = function (event) {
   const index = event.target.id
+  currentTurn()
+
+  // updateGame, valid move.
   if ($(event.target).text().length === 0) {
+    // const winCombo = { 1: [0, 1, 2], 2: [3, 4, 5], 3: [6, 7, 8], 4: [0, 3, 6], 5: [1, 4, 7], 6: [2, 5, 8], 7: [0, 4, 8], 8: [2, 4, 6] }
     const move = 'Valid'
+
     console.log(move)
-    $(event.target).text('X')
+    $(event.target).text(player)
     const value = $(event.target).text()
+    console.log(player)
     api.updateGame(index, value)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)

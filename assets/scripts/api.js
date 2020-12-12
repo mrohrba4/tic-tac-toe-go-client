@@ -49,8 +49,6 @@ const newGame = function () {
 }
 
 const updateGame = function (index, value) {
-  console.log(index)
-  console.log(value)
   const over = store.game.over
   console.log(over)
   return $.ajax({
