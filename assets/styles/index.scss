@@ -1,7 +1,39 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: lightgray;
+}
+// entire container
+.container-fluid {
+  background-color: lightgray;
+}
+// main page image
 .img-thumbnail {
   max-width: 80%;
   max-height: 400px;
+  object-fit: fill;
+  background-color: lightgray;
   // background-color: grey;
+}
+// sign-in
+.si {
+  text-decoration: underline;
+}
+.si1 {
+  margin: 5px;
+}
+.sibutton {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+// sign-up
+.su {
+  text-decoration: underline;
+}
+.su1 {
+  margin: 5px;
+}
+.subutton {
+  margin-top: 10px;
+  margin-left: 5px;
 }

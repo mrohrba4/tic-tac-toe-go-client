@@ -3,6 +3,7 @@
 const config = require('./config')
 const store = require('./store')
 
+// sign up API
 const signUp = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -10,6 +11,8 @@ const signUp = function (formData) {
     data: formData
   })
 }
+
+// sign in API
 const signIn = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
@@ -17,6 +20,7 @@ const signIn = function (formData) {
     data: formData
   })
 }
+// Change password API
 const changePassword = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/change-password',
@@ -27,6 +31,8 @@ const changePassword = function (formData) {
     }
   })
 }
+
+// sign out API
 const signOut = function () {
   return $.ajax({
     url: config.apiUrl + '/sign-out',
@@ -36,6 +42,8 @@ const signOut = function () {
     }
   })
 }
+
+// new game API
 const newGame = function () {
   return $.ajax({
     url: config.apiUrl + '/games',
@@ -48,6 +56,7 @@ const newGame = function () {
   )
 }
 
+// update game API function
 const updateGame = function (index, value) {
   const over = store.game.over
   console.log(over)

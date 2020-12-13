@@ -12,53 +12,59 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <div class="container">
-        <div class="border bg-secondary row d-flex justify-content-center">
+      <!-- // main container -->
+      <div class="container-fluid">
+        <div class="sticky-top border bg-secondary row d-flex justify-content-center">
           <h1>TTT GO</h1>
         </div>
+        <!-- Main image -->
         <div class="row d-flex justify-content-center">
-          <img src="assets/images/pngwing.com.png" alt="X icon" class="img-thumbnail bg-secondary">
+          <img src="assets/images/pngwing.com.png" alt="X icon" class="img-thumbnail col-12">
         </div>
+        <!-- alert message spot -->
           <p id="message" class="offset-md-5"></p>
+          <!-- unauthorized div -->
           <div class="unauth">
-            <h2 class="d-flex offset-md-4">Sign In</h2>
-
-            <form id="sign-in" class="offset-md-4">
-              <input
+            <!-- sign in form -->
+            <h2 class="si d-flex offset-md-5">Sign In</h2>
+            <form id="sign-in" class="offset-md-4 p-2">
+              <input class="si1"
                 name="credentials[email]"
                 type="text"
                 placeholder="email"
                 /><br>
-              <input
+              <input class="si1"
                 name="credentials[password]"
                 type="password"
                 placeholder="Password"
                 /><br>
-              <button type="submit">Sign In</button>
+              <button class="sibutton" type="submit">Sign In</button>
             </form>
-            <h2 class="d-flex offset-md-4">Sign Up</h2>
-            <form id="sign-up" class="offset-md-4">
-              <input
+            <!-- Sign up form -->
+            <h2 class="su d-flex offset-md-5">Sign Up</h2>
+            <form id="sign-up" class="offset-md-4 p-2">
+              <input class="su1"
                 placeholder="email"
                 type="text"
                 name="credentials[email]"
                 /><br>
-              <input
+              <input class="su1"
                 placeholder="Password"
                 type="password"
                 name="credentials[password]"/><br>
-              <input
+              <input class="su1"
                 placeholder="Confirm Password"
                 type="password"
                 name="credentials[password_confirmation]"
                 /><br>
-                <button type="submit">Sign Up</button>
+                <button class="subutton" type="submit">Sign Up</button>
             </form>
           </div>
+          <!-- Authorized div -->
           <div class="auth align-self-center offset-md-5">
-
+            <!-- New game Button -->
             <button id="new-game" class="offset-md-1 mb-1">New Game</button><br>
-
+            <!-- Change Password form -->
             <form id="change-password">
               <input
                 name="passwords[old]"
@@ -72,26 +78,30 @@
               />
               <button type="submit">Change Password</button>
             </form>
+            <!-- Cancel change password -->
             <button id="cancelcp">Cancel</button>
+            <!-- Change Password button -->
             <button id="changepw" class="mb-1">Change Password?</button><br>
+            <!-- sign out button -->
             <button id="sign-out" class="offset-md-1">Sign Out</button><br>
           </div>
+          <!-- game board div -->
           <div id="game-board" class="mt-2">
             <div class="game-create">
                 <div class="row d-flex justify-content-center">
                   <div id="checkclick" class="row">
                     <!-- // 1 -->
-                    <div data-cell-index='0' id="0" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='1' id="1" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='2' id="2" class="box col-4 p-3 border border-dark"></div>
+                    <div data-cell-index='0' id="0" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='1' id="1" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='2' id="2" class="box col-4 p-5 border border-dark"></div>
                     <!-- // 2 -->
-                    <div data-cell-index='3' id="3" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='4' id="4" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='5' id="5" class="box col-4 p-3 border border-dark"></div>
+                    <div data-cell-index='3' id="3" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='4' id="4" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='5' id="5" class="box col-4 p-5 border border-dark"></div>
                     <!-- // 3 -->
-                    <div data-cell-index='6' id="6" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='7' id="7" class="box col-4 p-3 border border-dark"></div>
-                    <div data-cell-index='8' id="8" class="box col-4 p-3 border border-dark"></div>
+                    <div data-cell-index='6' id="6" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='7' id="7" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='8' id="8" class="box col-4 p-5 border border-dark"></div>
                   </div>
                 </div>
           </div>

@@ -32,3 +32,7 @@ may change my password, or try to sign in again.
 ### Images
 
 #### Wireframes:
+
+![Image](assets/images/newTTTprojectWire1.jpg "wireframe1")
+![Image](assets/images/newTTTprojectWire2.jpg "wireframe1")
+![Image](assets/images/newTTTprojectWire3.jpg "wireframe1")

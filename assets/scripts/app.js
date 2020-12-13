@@ -8,18 +8,32 @@ const events = require('./events')
 // require('./example')
 
 $(() => {
+  // hide Authorized
   $('.auth').hide()
+  // hide game-board
   $('#game-board').hide()
+  // sign up function
   $('#sign-up').on('submit', events.onSignUp)
+  // sign in function
   $('#sign-in').on('submit', events.onSignIn)
+  // show unauthorized
   $('.unauth').show()
+  // hide change password form.
   $('#change-password').hide()
+  // change password function
   $('#change-password').on('submit', events.onChangePassword)
+  // Show change password form.
   $('#changepw').show()
+  // change password button function
   $('#changepw').on('click', events.onCpbutton)
+  // hide cancel password change button
   $('#cancelcp').hide()
+  // cancel change password function
   $('#cancelcp').on('click', events.onCpcancel)
+  // sign out function
   $('#sign-out').on('click', events.onSignOut)
+  // new game function
   $('#new-game').on('click', events.onGameCreate)
+  // on click space function/checker
   $('.box').on('click', events.onClickSpace)
 })
