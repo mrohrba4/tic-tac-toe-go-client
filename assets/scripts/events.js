@@ -71,10 +71,6 @@ let turnCount = 0
 // stores player variable
 let player = 'X'
 
-// initializing player moves storage arrays
-const xTrack = []
-const oTrack = []
-
 // decides current turn
 const currentTurn = function () {
   // stores player variable
@@ -89,45 +85,77 @@ const currentTurn = function () {
   }
 }
 
+const xTrack = []
+const oTrack = []
+let win = ''
+
 // on click space function
 const onClickSpace = function (event) {
   currentTurn()
-  // const inArray = []
   const index = event.target.id
-  // if ($(event.target).text(player) === 'X') {
-  //   const xTrack = inArray + upIndex
-  //   console.log(xTrack)
-  // } else if ($(event.target).text(player) === 'O') {
-  //   const oTrack = inArray + upIndex
-  //   console.log(oTrack)
-  // } else {
-  //   console.log('error')
-  // }
-
+  let winCheck = null
+  // winning combinations.
+  const winCombo = [
+    // horizontal wins
+    ['0', '1', '2'],
+    ['3', '4', '5'],
+    ['6', '7', '8'],
+    // vertical wins
+    ['0', '3', '6'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    // diagonal wins
+    ['0', '4', '8'],
+    ['2', '4', '6']
+  ]
   // updateGame, valid move.
   if ($(event.target).text().length === 0) {
-    // winning combinations.
-    const winCombo = ['012', '345', '678', '036', '147', '258', '048', '246']
-    const move = 'Valid'
-
-    console.log(move)
     $(event.target).text(player)
     const value = $(event.target).text()
-    console.log(xTrack, oTrack, winCombo)
-    // const newArr = []
-    // const upIndex = newArr.push(index + '')
-    // console.log(upIndex, newArr)
-    api.updateGame(index, value, winCombo, xTrack, oTrack)
+    console.log(winCombo)
+    api.updateGame(index, value, winCheck)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   } else {
-    const move = 'Invalid'
     $('#message').text('Invalid Move')
-    console.log(move)
   }
-  console.log(api.updateGame)
-}
 
+  if (turnCount % 2 === 0) {
+    oTrack.push(index.toString())
+  } else {
+    xTrack.push(index.toString())
+  }
+  const xTrack2 = xTrack.toString()
+  const oTrack2 = oTrack.toString()
+  console.log(xTrack2 + '|' + oTrack2)
+  // check if X wins
+  if (xTrack2.includes('0,1,2') === true || xTrack2.includes('3,4,5') === true || xTrack2.includes('6,7,8') === true) {
+    win = 'X'
+    winCheck = true
+  } else if (xTrack2.includes('0,3,6') === true || xTrack2.includes('1,4,7') === true || xTrack2.includes('2,5,8') === true) {
+    win = 'X'
+    winCheck = true
+  } else if (xTrack2.includes('0,4,8') === true || xTrack2.includes('2,4,6') === true) {
+    win = 'X'
+    winCheck = true
+  } else {
+    winCheck = false
+  }
+  // Check if O wins
+  if (oTrack2.includes('0,1,2') === true || oTrack2.includes('3,4,5') === true || oTrack2.includes('6,7,8') === true) {
+    win = 'O'
+    winCheck = true
+  } else if (oTrack2.includes('0,3,6') === true || oTrack2.includes('1,4,7') === true || oTrack2.includes('2,5,8') === true) {
+    win = 'O'
+    winCheck = true
+  } else if (oTrack2.includes('0,4,8') === true || oTrack2.includes('2,4,6') === true) {
+    win = 'O'
+    winCheck = true
+  } else {
+    winCheck = false
+  }
+  console.log(winCheck)
+}
 module.exports = {
   onSignUp,
   onSignIn,
@@ -137,6 +165,5 @@ module.exports = {
   onGameCreate,
   onClickSpace,
   onCpcancel,
-  xTrack,
-  oTrack
+  turnCount
 }

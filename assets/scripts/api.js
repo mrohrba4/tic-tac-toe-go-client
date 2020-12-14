@@ -57,8 +57,14 @@ const newGame = function () {
 }
 
 // update game API function
-const updateGame = function (index, value) {
+const updateGame = function (index, value, winCheck) {
   const over = store.game.over
+  console.log(winCheck)
+  if (winCheck === true) {
+    store.game.over = true
+  } else {
+    store.game.over = false
+  }
   console.log(over)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,

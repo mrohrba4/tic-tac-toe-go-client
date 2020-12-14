@@ -63,23 +63,11 @@ const newGameFailure = function (error) {
 }
 
 // update game success & failure.
-const updateGameSuccess = function (event, winCombo, xTrack, oTrack) {
-  // const gameData = event.game
-  const index
-  console.log(index)
-  const newArr = []
-  const upIndex = newArr.push(index + '')
-  console.log(upIndex, newArr)
-  // if ((xChange.game.cells).length > 0) {
-  //   const indexLog = xChange.game.cells
-  // }
-  // console.log(gameData.cells)
-  // if (winCond.some(gameData.cells) === true) {
-  //   store.game.over = true
-  // } else {
-  //   store.game.over = false
-  // }
-  // console.log(gameData._id, gameData.cells)
+const updateGameSuccess = function (event, winner) {
+  const gameData = event.game
+
+  console.log(gameData.over)
+  // console.log(gameData.cells.indexOf('X'))
 }
 const updateGameFailure = function (error) {
   $('#message').text('Failed' + error)

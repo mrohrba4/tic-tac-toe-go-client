@@ -1,6 +1,6 @@
 # TIC TAC TOE GO
 
-A client-side multiplayer tic-tac-toe game wbe app. This is a project where I <br>
+A client-side multiplayer tic-tac-toe game web app. This is a project where I <br>
 test my skills.
 
 ### Important Links
@@ -28,6 +28,14 @@ may change my password, or try to sign in again.
 - Bootstrap.
 
 ### Unsolved Problems
+
+- Must make a function that shows the number of games played
+- Must make a function that shows when the turn changes
+- Must make sure forms are cleared
+- Must make sure to not be able to add to the board after a win
+- Must announce the winner
+- Must have an add games button
+- Make the styling closer to my wireframes.
 
 ### Images
 
