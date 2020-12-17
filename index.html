@@ -19,15 +19,19 @@
         </div>
         <!-- Main image -->
         <div class="row d-flex justify-content-center">
-          <img src="assets/images/pngwing.com.png" alt="X icon" class="img-thumbnail col-12">
+          <img src="public/pngwing.com.png" alt="X icon" class="img-thumbnail col-12">
         </div>
         <!-- alert message spot -->
-          <p id="message" class="offset-md-5"></p>
+          <p id="message" class="row d-flex text-danger justify-content-center"></p>
+          <div id="gpnum">
+            <p class="gp float-right float-sm-none">Games Played:</p>
+            <div class="gp float-right float-sm-none"></div>
+          </div>
           <!-- unauthorized div -->
           <div class="unauth">
             <!-- sign in form -->
-            <h2 class="si d-flex offset-md-5">Sign In</h2>
-            <form id="sign-in" class="offset-md-4 p-2">
+            <h2 class="si d-flex flex-row justify-content-center">Sign In</h2>
+            <form id="sign-in" class="offset-5 justify-content-center">
               <input class="si1"
                 name="credentials[email]"
                 type="text"
@@ -41,9 +45,9 @@
               <button class="sibutton" type="submit">Sign In</button>
             </form>
             <!-- Sign up form -->
-            <h2 class="su d-flex offset-md-5">Sign Up</h2>
-            <form id="sign-up" class="offset-md-4 p-2">
-              <input class="su1"
+            <h2 class="su d-flex flex-row justify-content-center">Sign Up</h2>
+            <form id="sign-up" class="offset-5 justify-content-center">
+              <input class="su1 "
                 placeholder="email"
                 type="text"
                 name="credentials[email]"
@@ -86,7 +90,7 @@
             <!-- New game Button -->
             <button id="new-game" class="offset-md-1 mb-1">New Game</button><br>
             <!-- Change Password form -->
-            <form id="change-password">
+            <form id="change-password" class="justify-content-center">
               <input
                 name="passwords[old]"
                 type="password"

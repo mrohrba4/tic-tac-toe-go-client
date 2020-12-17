@@ -36,4 +36,6 @@ $(() => {
   $('#new-game').on('click', events.onGameCreate)
   // on click space function/checker
   $('.box').on('click', events.onClickSpace)
+  // hides game count.
+  $('#gpnum').hide()
 })

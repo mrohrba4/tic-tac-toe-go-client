@@ -18,24 +18,36 @@ body {
 // sign-in
 .si {
   text-decoration: underline;
+  margin-left: 50px;
+}
+#sign-in {
+  margin-right: 300px;
+  margin-bottom: 25px;
+  border: black solid 1px;
 }
 .si1 {
   margin: 5px;
 }
 .sibutton {
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 50px;
+  margin-bottom: 25px;
 }
 // sign-up
 .su {
   text-decoration: underline;
+}
+#sign-up {
+  margin-right: 300px;
+  margin-bottom: 25px;
+  border: black solid 1px;
 }
 .su1 {
   margin: 5px;
 }
 .subutton {
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 50px;
 }
 #0 {
   font-size: large;

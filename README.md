@@ -7,6 +7,8 @@ test my skills.
 
 ### Planning Story
 
+I approached the game in a minimalist fashion, I wanted the focus of it to be on the gameplay. I broke the requirements down and approached them seperately until I started coding, which I then linked each one in a efficient manner.
+
 ### User Stories
 
 - *As a New User*, I want to make an account so that I may sign in.
