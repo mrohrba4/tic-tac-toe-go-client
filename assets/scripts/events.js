@@ -59,8 +59,12 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+let gameCount = 0
 // create game function
 const onGameCreate = function (event) {
+  gameCount++
+  $('.gp').text(gameCount)
+  console.log(gameCount)
   api.newGame()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
@@ -89,7 +93,7 @@ const currentTurn = function () {
 
 const xTrack = []
 const oTrack = []
-let win = ''
+
 // let gameNum = '1'
 // winning combinations.
 // const winCombo = [
@@ -106,7 +110,8 @@ let win = ''
 //   ['2', '4', '6']
 // ]
 // Checks for winner
-let winCheck = null
+let winCheck
+let win1
 
 // on click space function
 const onClickSpace = function (event) {
@@ -120,7 +125,7 @@ const onClickSpace = function (event) {
   if ($(event.target).text().length === 0) {
     $(event.target).text(player)
     const value = $(event.target).text()
-    api.updateGame(index, value, winCheck)
+    api.updateGame(index, value, win1, winCheck)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   } else {
@@ -132,46 +137,63 @@ const onClickSpace = function (event) {
   } else {
     xTrack.push(index.toString())
   }
-  console.log(xTrack)
+  // console.log(xTrack)
   const xTrack2 = xTrack.toString()
   const oTrack2 = oTrack.toString()
-  console.log(xTrack2 + '|' + oTrack2)
   // check if X wins
-  if (xTrack2.includes('0,1,2') === true || xTrack2.includes('3,4,5') === true || xTrack2.includes('6,7,8') === true) {
-    win = 'X'
-    // let gameNum = gameNum + 1
-    winCheck = true
-  } else if (xTrack2.includes('0,3,6') === true || xTrack2.includes('1,4,7') === true || xTrack2.includes('2,5,8') === true) {
-    win = 'X'
-    // gameNum++
-    winCheck = true
-  } else if (xTrack2.includes('0,4,8') === true || xTrack2.includes('2,4,6') === true) {
-    win = 'X'
-    // gameNum++
-    winCheck = true
-  } else {
-    winCheck = false
+  const xWin = function () {
+    if (xTrack2.includes('0,1,2') === true || xTrack2.includes('3,4,5') === true || xTrack2.includes('6,7,8') === true) {
+      win1 = 'X'
+      // let gameNum = gameNum + 1
+      winCheck = true
+      console.log(win1)
+      return win1 + winCheck
+    } else if (xTrack2.includes('0,3,6') === true || xTrack2.includes('1,4,7') === true || xTrack2.includes('2,5,8') === true) {
+      const win1 = 'X'
+      // gameNum++
+      winCheck = true
+      console.log(win1)
+      return win1
+    } else if (xTrack2.includes('0,4,8') === true || xTrack2.includes('2,4,6') === true) {
+      const win1 = 'X'
+      // gameNum++
+      winCheck = true
+      console.log(win1)
+      return win1
+    }
+    return win1
   }
-  console.log(winCheck, win)
-
+  xWin()
+  const oWin = function () {
   // Check if O wins
-  if (oTrack2.includes('0,1,2') === true || oTrack2.includes('3,4,5') === true || oTrack2.includes('6,7,8') === true) {
-    win = 'O'
-    // gameNum++
-    winCheck = true
-  } else if (oTrack2.includes('0,3,6') === true || oTrack2.includes('1,4,7') === true || oTrack2.includes('2,5,8') === true) {
-    win = 'O'
-    // gameNum++
-    winCheck = true
-  } else if (oTrack2.includes('0,4,8') === true || oTrack2.includes('2,4,6') === true) {
-    win = 'O'
-    // gameNum++
-    winCheck = true
-  } else {
-    winCheck = false
+    if (oTrack2.includes('0,1,2') === true || oTrack2.includes('3,4,5') === true || oTrack2.includes('6,7,8') === true) {
+      const win1 = 'O'
+      // gameNum++
+      winCheck = true
+      console.log(win1)
+      return win1
+    } else if (oTrack2.includes('0,3,6') === true || oTrack2.includes('1,4,7') === true || oTrack2.includes('2,5,8') === true) {
+      const win1 = 'O'
+      // gameNum++
+      winCheck = true
+      console.log(win1)
+      return win1
+    } else if (oTrack2.includes('0,4,8') === true || oTrack2.includes('2,4,6') === true) {
+      const win1 = 'O'
+      // gameNum++
+      winCheck = true
+      console.log(win1)
+      return win1
+    }
+    return win1
   }
-  console.log(winCheck, win)
+
+  oWin()
+  console.log(win1)
+  console.log('This is X win ' + xWin())
+  console.log('This is O win ' + oWin())
 }
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -181,5 +203,6 @@ module.exports = {
   onGameCreate,
   onClickSpace,
   onCpcancel,
-  turnCount
+  turnCount,
+  winCheck
 }

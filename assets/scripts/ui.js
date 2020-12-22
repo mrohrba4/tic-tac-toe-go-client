@@ -17,6 +17,7 @@ const signInSuccess = function (response) {
   store.user = response.user
   $('.unauth').hide()
   $('.auth').show()
+  $('#changepw').show()
   $('form').trigger('reset')
 }
 const signInFailure = function () {
@@ -41,8 +42,8 @@ const signOutSuccess = function () {
   $('.auth').hide()
   $('#game-board').hide()
   $('.unauth').show()
+  $('#gpnum').hide()
   store.user = null
-  $('form').trigger('reset')
 }
 const signOutFailure = function () {
   $('#message').text('sign out failed')
@@ -51,7 +52,7 @@ const signOutFailure = function () {
 
 // create new game success & failure
 const newGameSuccess = function (response) {
-  $('#message').text('success')
+  $('#message').text('New Game Made')
   store.game = response.game
   $('#game-board').show()
   $('.unauth').hide()
@@ -64,11 +65,22 @@ const newGameFailure = function () {
   $('#message').text('New game failed')
 }
 
+const gameWin = function (win1) {
+  const win2 = win1
+  console.log(win2)
+  if (win2 === 'X') {
+    $('#message').text('X Wins!')
+  } else if (win2 === 'O') {
+    $('#message').text('O Wins!')
+  } else {
+    console.log('no winner yet')
+  }
+}
 // update game success & failure.
-const updateGameSuccess = function (event, winner) {
-  const gameData = event.game
-
-  console.log(gameData)
+const updateGameSuccess = function (event) {
+  // const gameData = event.game
+  const winner = gameWin()
+  console.log(winner)
 }
 const updateGameFailure = function () {
   $('#message').text('Failed to update')
@@ -86,5 +98,6 @@ module.exports = {
   newGameSuccess,
   newGameFailure,
   updateGameSuccess,
-  updateGameFailure
+  updateGameFailure,
+  gameWin
 }

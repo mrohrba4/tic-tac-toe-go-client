@@ -64,6 +64,7 @@ const updateGame = function (index, value, winCheck) {
   } else {
     store.game.over = false
   }
+  console.log('This is WinCheck ' + winCheck)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
