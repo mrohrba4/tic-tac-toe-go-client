@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe Go</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <!-- main container -->
+      <div class="container-fluid">
+        <!-- title -->
+        <div class="sticky-top border bg-secondary row d-flex justify-content-center">
+          <h1>TTT GO</h1>
+        </div>
+        <!-- Main image -->
+        <div class="row d-flex justify-content-center">
+          <img src="public/pngwing.com.png" alt="X icon" class="img-thumbnail col-12">
+        </div>
+        <!-- alert message spot -->
+          <p id="message" class="row d-flex text-danger justify-content-center"></p>
+          <div id="turn-alert"></div>
+          <!-- Last winner part -->
+          <div id="lwd">
+            <p class="lastw">Last winner:</p>
+            <div id="lw"></div>
+          </div>
+          <!-- unauthorized(sign in, sign up) div -->
+          <div class="unauth">
+            <!-- sign in form -->
+            <h2 class="si d-flex flex-row justify-content-center">Sign In</h2>
+            <form id="sign-in" class="offset-5 justify-content-center">
+              <input class="si1"
+                name="credentials[email]"
+                type="text"
+                placeholder="email"
+                /><br>
+              <input class="si1"
+                name="credentials[password]"
+                type="password"
+                placeholder="Password"
+                /><br>
+              <button class="sibutton" type="submit">Sign In</button>
+            </form>
+            <!-- Sign up form -->
+            <h2 class="su d-flex flex-row justify-content-center">Sign Up</h2>
+            <form id="sign-up" class="offset-5 justify-content-center">
+              <input class="su1 "
+                placeholder="email"
+                type="text"
+                name="credentials[email]"
+                /><br>
+              <input class="su1"
+                placeholder="Password"
+                type="password"
+                name="credentials[password]"/><br>
+              <input class="su1"
+                placeholder="Confirm Password"
+                type="password"
+                name="credentials[password_confirmation]"
+                /><br>
+                <button class="subutton" type="submit">Sign Up</button>
+            </form>
+          </div>
+          <!-- game board div -->
+          <div id="game-board" class="mt-2 mb-2">
+            <div class="game-create">
+                <div class="row d-flex justify-content-center">
+                  <div id="checkclick" class="row">
+                    <!-- // 1 -->
+                    <div data-cell-index='0' id="0" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='1' id="1" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='2' id="2" class="box col-4 p-5 border border-dark"></div>
+                    <!-- // 2 -->
+                    <div data-cell-index='3' id="3" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='4' id="4" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='5' id="5" class="box col-4 p-5 border border-dark"></div>
+                    <!-- // 3 -->
+                    <div data-cell-index='6' id="6" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='7' id="7" class="box col-4 p-5 border border-dark"></div>
+                    <div data-cell-index='8' id="8" class="box col-4 p-5 border border-dark"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- Authorized(new game, CP, Previous games) div -->
+          <div class="auth align-self-center offset-md-5">
+            <!-- New game Button -->
+            <button id="new-game" class="offset-md-1">New Game</button>
+            <!-- Change Password form -->
+            <form id="change-password" class="offset-0 justify-content-center">
+              <!-- Old pass input -->
+              <input class="cp1"
+                name="passwords[old]"
+                type="password"
+                placeholder="Old Password"
+              /><br>
+              <!-- New pass input -->
+              <input class="cp1"
+                name="passwords[new]"
+                type="password"
+                placeholder="New Password"
+              /><br>
+              <!-- submit button -->
+              <button class="cpbutton" type="submit">Change Password</button><br>
+            </form>
+            <!-- Cancel change password -->
+            <button id="cancelcp">Cancel</button><br>
+            <!-- Change Password button -->
+            <button id="changepw" class="mb-1">Change Password?</button><br>
+            <!-- Show previous games button -->
+            <div>
+              <button id="spg" type="submit">Show previous games</button>
+            </div>
+            <!-- sign out button -->
+            <button id="sign-out" class="offset-md-1">Sign Out</button><br>
+          </div>
+          <!-- Previous games page -->
+          <div id="pgcon">
+            <div>
+              <!-- Label -->
+              <h4>Games Played:</h4>
+              <!-- Data shown here -->
+              <pre id="pg"></pre>
+          </div>
+
+        </div>
+      </div>
+    </body>
+</html>
