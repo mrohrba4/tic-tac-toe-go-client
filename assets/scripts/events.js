@@ -35,6 +35,7 @@ const onCpbutton = function (event) {
 
 // cancel changing password button.
 const onCpcancel = function (event) {
+  $('#message').text('')
   $('#new-game').show()
   $('#changepw').show()
   $('#change-password').hide()
@@ -59,21 +60,25 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
-let gameCount = 0
-// create game function
-const onGameCreate = function (event) {
-  gameCount++
-  $('.gp').text(gameCount)
-  console.log(gameCount)
-  api.newGame()
-    .then(ui.newGameSuccess)
-    .catch(ui.newGameFailure)
-}
-
 // Keeps turn count.
 let turnCount = 0
 // stores player variable
 let player = 'X'
+// store cells
+let cells = ['', '', '', '', '', '', '', '']
+// game over
+let gOver = false
+
+// create game function
+const onGameCreate = function (event) {
+  event.preventDefault()
+  $('#lw').hide()
+  turnCount = 0
+  $('#turn-alert').text('Player X turn')
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
 // decides current turn
 const currentTurn = function () {
@@ -84,114 +89,114 @@ const currentTurn = function () {
   // deciding which token logic
   if (turnCount % 2 === 0) {
     player = 'O'
-    return turnCount
+    $('#turn-alert').text('Player X turn')
   } else {
     player = 'X'
-    return turnCount
+    $('#turn-alert').text('Player O turn')
   }
 }
 
-const xTrack = []
-const oTrack = []
-
-// let gameNum = '1'
-// winning combinations.
-// const winCombo = [
-//   // horizontal wins
-//   ['0', '1', '2'],
-//   ['3', '4', '5'],
-//   ['6', '7', '8'],
-//   // vertical wins
-//   ['0', '3', '6'],
-//   ['1', '4', '7'],
-//   ['2', '5', '8'],
-//   // diagonal wins
-//   ['0', '4', '8'],
-//   ['2', '4', '6']
-// ]
-// Checks for winner
-let winCheck
-let win1
-
 // on click space function
 const onClickSpace = function (event) {
+  event.preventDefault()
   currentTurn()
   const index = event.target.id
-  console.log(turnCount)
-  // const test = $('#gpnum').text(gameNum)
-  // console.log(test)
+  // index of the cells.
+  cells[index] = player
+  // deciding the winner.
+  const win = function () {
+    // across ################
+    if (cells[index] === cells[0] && cells[index] === cells[1] && cells[index] === cells[2]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      // freezes game board.
+      $('#game-board').css('pointer-events', 'none')
+      // reset cell array
+      cells = ['', '', '', '', '', '', '', '']
+    } else if (cells[index] === cells[3] && cells[index] === cells[4] && cells[index] === cells[5]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+    } else if (cells[index] === cells[6] && cells[index] === cells[7] && cells[index] === cells[8]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+      // down ################
+    } else if (cells[index] === cells[0] && cells[index] === cells[3] && cells[index] === cells[6]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+    } else if (cells[index] === cells[1] && cells[index] === cells[4] && cells[index] === cells[7]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+    } else if (cells[index] === cells[2] && cells[index] === cells[5] && cells[index] === cells[8]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+      // Diagonal ####################
+    } else if (cells[index] === cells[0] && cells[index] === cells[4] && cells[index] === cells[8]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+    } else if (cells[index] === cells[2] && cells[index] === cells[4] && cells[index] === cells[6]) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text(`${player} Has won the game.`)
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+      // Tie ###################
+    } else if (!cells.includes('')) {
+      $('#turn-alert').hide()
+      $('#lw').show()
+      $('#lw').text('Tie!')
+      gOver = true
+      $('#game-board').css('pointer-events', 'none')
+      cells = ['', '', '', '', '', '', '', '']
+    }
+  }
+  // calling the win decider.
+  win(cells)
 
   // updateGame, valid move.
   if ($(event.target).text().length === 0) {
     $(event.target).text(player)
     const value = $(event.target).text()
-    api.updateGame(index, value, win1, winCheck)
+    api.updateGame(index, value, player, gOver)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
   } else {
+    // invalid move.
+    $(currentTurn).off()
     $('#message').text('Invalid Move')
   }
-
-  if (turnCount % 2 === 0) {
-    oTrack.push(index.toString())
-  } else {
-    xTrack.push(index.toString())
-  }
-  // console.log(xTrack)
-  const xTrack2 = xTrack.toString()
-  const oTrack2 = oTrack.toString()
-  // check if X wins
-  const xWin = function () {
-    if (xTrack2.includes('0,1,2') === true || xTrack2.includes('3,4,5') === true || xTrack2.includes('6,7,8') === true) {
-      win1 = 'X'
-      // let gameNum = gameNum + 1
-      winCheck = true
-      console.log(win1)
-      return win1 + winCheck
-    } else if (xTrack2.includes('0,3,6') === true || xTrack2.includes('1,4,7') === true || xTrack2.includes('2,5,8') === true) {
-      const win1 = 'X'
-      // gameNum++
-      winCheck = true
-      console.log(win1)
-      return win1
-    } else if (xTrack2.includes('0,4,8') === true || xTrack2.includes('2,4,6') === true) {
-      const win1 = 'X'
-      // gameNum++
-      winCheck = true
-      console.log(win1)
-      return win1
-    }
-    return win1
-  }
-  xWin()
-  const oWin = function () {
-  // Check if O wins
-    if (oTrack2.includes('0,1,2') === true || oTrack2.includes('3,4,5') === true || oTrack2.includes('6,7,8') === true) {
-      const win1 = 'O'
-      // gameNum++
-      winCheck = true
-      console.log(win1)
-      return win1
-    } else if (oTrack2.includes('0,3,6') === true || oTrack2.includes('1,4,7') === true || oTrack2.includes('2,5,8') === true) {
-      const win1 = 'O'
-      // gameNum++
-      winCheck = true
-      console.log(win1)
-      return win1
-    } else if (oTrack2.includes('0,4,8') === true || oTrack2.includes('2,4,6') === true) {
-      const win1 = 'O'
-      // gameNum++
-      winCheck = true
-      console.log(win1)
-      return win1
-    }
-    return win1
-  }
-
-  oWin()
-  console.log(win1)
-  console.log('This is X win ' + xWin())
-  console.log('This is O win ' + oWin())
+}
+// previous games function
+const onPreviousGames = function () {
+  api.previousGames()
+    .then(ui.previousGamesSuccess)
+    .catch(ui.previousGameFailure)
 }
 
 module.exports = {
@@ -204,5 +209,5 @@ module.exports = {
   onClickSpace,
   onCpcancel,
   turnCount,
-  winCheck
+  onPreviousGames
 }

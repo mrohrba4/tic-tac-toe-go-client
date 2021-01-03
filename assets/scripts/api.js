@@ -20,6 +20,7 @@ const signIn = function (formData) {
     data: formData
   })
 }
+
 // Change password API
 const changePassword = function (formData) {
   return $.ajax({
@@ -44,27 +45,19 @@ const signOut = function () {
 }
 
 // new game API
-const newGame = function () {
+const newGame = function (data) {
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
+    data: data,
     headers: {
       Authorization: 'Bearer ' + store.user.token
-    },
-    body: {}
-  }
-  )
+    }
+  })
 }
 
-// update game API function
-const updateGame = function (index, value, winCheck) {
-  const over = store.game.over
-  if (winCheck === true) {
-    store.game.over = true
-  } else {
-    store.game.over = false
-  }
-  console.log('This is WinCheck ' + winCheck)
+// update game API
+const updateGame = function (index, value, player, gOver) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game._id,
     method: 'PATCH',
@@ -77,16 +70,29 @@ const updateGame = function (index, value, winCheck) {
           index: index,
           value: value
         },
-        over: over
+        over: gOver
       }
     }
   })
 }
+
+// previous games API
+const previousGames = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   newGame,
-  updateGame
+  updateGame,
+  previousGames
 }

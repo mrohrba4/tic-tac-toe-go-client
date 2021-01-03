@@ -38,10 +38,14 @@ const changePasswordFailure = function () {
 // Sign out success & failure
 const signOutSuccess = function () {
   $('#message').text('Signed out successfully')
+  $('#lwd').hide()
+  $('#spg').hide()
+  $('#pgcon').hide()
   $('form').trigger('reset')
   $('.auth').hide()
   $('#game-board').hide()
   $('.unauth').show()
+  $('.gp').text(0)
   $('#gpnum').hide()
   store.user = null
 }
@@ -51,9 +55,14 @@ const signOutFailure = function () {
 }
 
 // create new game success & failure
-const newGameSuccess = function (response) {
+const newGameSuccess = function (data) {
   $('#message').text('New Game Made')
-  store.game = response.game
+  store.game = data.game
+  $('#game-board').css('pointer-events', 'auto')
+  $('#spg').show()
+  $('#pgcon').hide()
+  $('#lwd').show()
+  $('#turn-alert').show()
   $('#game-board').show()
   $('.unauth').hide()
   $('#changepw').hide()
@@ -65,25 +74,24 @@ const newGameFailure = function () {
   $('#message').text('New game failed')
 }
 
-const gameWin = function (win1) {
-  const win2 = win1
-  console.log(win2)
-  if (win2 === 'X') {
-    $('#message').text('X Wins!')
-  } else if (win2 === 'O') {
-    $('#message').text('O Wins!')
-  } else {
-    console.log('no winner yet')
-  }
-}
 // update game success & failure.
 const updateGameSuccess = function (event) {
-  // const gameData = event.game
-  const winner = gameWin()
-  console.log(winner)
 }
 const updateGameFailure = function () {
   $('#message').text('Failed to update')
+}
+
+// previous games success & failure.
+const previousGamesSuccess = function (response) {
+  const games = response.games
+  $('#game-board').hide()
+  $('#lwd').hide()
+  $('#turn-alert').hide()
+  $('#pgcon').show()
+  $('#pg').text(`${store.user.email} Has played: ${games.length} Games.`)
+}
+const previousGamesFailure = function () {
+  $('#message').text('Something went wrong')
 }
 
 module.exports = {
@@ -99,5 +107,6 @@ module.exports = {
   newGameFailure,
   updateGameSuccess,
   updateGameFailure,
-  gameWin
+  previousGamesSuccess,
+  previousGamesFailure
 }

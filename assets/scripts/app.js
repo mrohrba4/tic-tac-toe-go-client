@@ -12,6 +12,12 @@ $(() => {
   $('.auth').hide()
   // hide game-board
   $('#game-board').hide()
+  // previous game page.
+  $('#pgcon').hide()
+  // hide last winner
+  $('#lwd').hide()
+  // show previous games Button
+  $('#spg').hide()
   // sign up function
   $('#sign-up').on('submit', events.onSignUp)
   // sign in function
@@ -38,4 +44,6 @@ $(() => {
   $('.box').on('click', events.onClickSpace)
   // hides game count.
   $('#gpnum').hide()
+  // show previous games.
+  $('#spg').on('click', events.onPreviousGames)
 })
